@@ -1,39 +1,11 @@
 import TicTacToe from "./TicTacToe";
-
-const template = document.createElement("template");
-template.innerHTML = `
-      <style>
-        :host {
-          display: flex;
-          flex-wrap: wrap;
-        }
-        .content {
-            display: grid;
-            grid-gap: 20px;
-            width: fit-content;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-        .cell {
-            border: 1px solid gray;
-            padding: 10px;
-            width: 50px;
-            height: 50px;
-        }
-      </style>
-      <div class="content">
-        <div id="gamegrid" class="grid"></div>
-        <div id="gamestate" class="grid"></div>
-      </div>
-    `;
+import GridTemplate from './templates/Grid';
 
 class TicTacToeUI extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.shadowRoot.appendChild(GridTemplate.content.cloneNode(true));
 
     this.game = new TicTacToe(3);
 
